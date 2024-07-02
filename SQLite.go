@@ -16,7 +16,7 @@ func initDB(dbPath string) error {
 	if _, err = db.Exec(
 		`CREATE TABLE IF NOT EXISTS logs (
     	id INTEGER PRIMARY KEY AUTOINCREMENT,
-    	timestamp TEXT NOT NULL,
+    	timestamp INTEGER NOT NULL,
     	category TEXT NOT NULL,
     	message TEXT NOT NULL
 		)`,

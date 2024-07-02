@@ -7,12 +7,11 @@ import (
 )
 
 type Log struct {
-	Timestamp string
+	Timestamp int64
 	Category  string
 	Msg       string
 }
 
-var TimestampFormat = "2006-01-02 15:04:05"
 var LogDir = "./logs"
 var LogDb = "logs.db"
 
@@ -54,7 +53,7 @@ func (l Log) User(msg string) {
 }
 
 func logger(l Log, msg string) {
-	l.Timestamp = time.Now().Format(TimestampFormat)
+	l.Timestamp = time.Now().UnixMilli()
 	l.Msg = msg
 	if l.Category != "USER" {
 		fmt.Println(formatLog(l))
