@@ -59,8 +59,9 @@ func logger(l Log, msg string) {
 	if l.Category != "USER" {
 		fmt.Println(formatLog(l))
 	}
-	_, err := addLog(&l)
+	id, err := addLog(&l)
 	if err != nil {
+		fmt.Printf("Error adding log id: %+v\n", id)
 		panic(err)
 	}
 }
