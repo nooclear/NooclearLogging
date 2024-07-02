@@ -16,7 +16,7 @@ func initDB(dbPath string) error {
 	if _, err = db.Exec(
 		`CREATE TABLE IF NOT EXISTS logs (
     	id INTEGER PRIMARY KEY AUTOINCREMENT,
-    	dateTime TEXT NOT NULL,
+    	timestamp TEXT NOT NULL,
     	category TEXT NOT NULL,
     	message TEXT NOT NULL
 		)`,
@@ -30,7 +30,7 @@ func initDB(dbPath string) error {
 func addLog(l *Log) (int64, error) {
 	result, err := db.ExecContext(
 		context.Background(),
-		`INSERT INTO logs (dateTime, category, message) VALUES (?, ?, ?)`, l.Datetime, l.Category, l.Message,
+		`INSERT INTO logs (timestamp, category, message) VALUES (?, ?, ?)`, l.Timestamp, l.Category, l.Msg,
 	)
 	if err != nil {
 		return 0, err
