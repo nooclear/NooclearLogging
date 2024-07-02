@@ -26,7 +26,7 @@ func InitLogSystem() error {
 }
 
 func formatLog(log Log) string {
-	msg := fmt.Sprintf("%s %s %s", log.Timestamp, log.Category, log.Msg)
+	msg := fmt.Sprintf("%v %s %s", log.Timestamp, log.Category, log.Msg)
 	return msg
 }
 
